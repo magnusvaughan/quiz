@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="quiz-name" class="col-sm-3 control-label">Quiz Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="quizName" id="quiz-name" class="form-control">
+                    <input type="text" name="quiz_name" id="quiz-name" class="form-control">
                 </div>
             </div>
 
@@ -36,48 +36,48 @@
                                     <fieldset class="form-group">
                                         <td>
                                             <div class="form-group">
-                                                <label for="Question1AnswerInput1">Answer 1</label>
-                                                <input type="text" class="form-control" id="Question1AnswerInput1" aria-describedby="Question1AnswerInput1" placeholder="Enter answer">
+                                                <label for="AnswerInput1-Question1">Answer 1</label>
+                                                <input type="text" class="form-control" name="AnswerInput1-Question1" id="Question1AnswerInput1" aria-describedby="Question1AnswerInput1" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                    <input type="radio" class="form-check-input" name="OptionsRadios-question1" id="OptionsRadios1-question1" value="option1" checked>
                                                     Correct?
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="Question1AnswerInput2">Answer 2</label>
-                                                <input type="text" class="form-control" id="Question1AnswerInput2" aria-describedby="Question1AnswerInput2" placeholder="Enter answer">
+                                                <label for="AnswerInput2-Question1">Answer 2</label>
+                                                <input type="text" class="form-control" name="AnswerInput2-Question1" id="AnswerInput2-Question1" aria-describedby="Question1AnswerInput2" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                    <input type="radio" class="form-check-input" name="OptionsRadios-question1" id="OptionsRadios2-question1" value="option2">
                                                     Correct?
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="Question1AnswerInput3">Answer 3</label>
-                                                <input type="text" class="form-control" id="Question1AnswerInput3" aria-describedby="Question1AnswerInput3" placeholder="Enter answer">
+                                                <label for="AnswerInput3-Question1">Answer 3</label>
+                                                <input type="text" class="form-control" name="AnswerInput3-Question1" id="AnswerInput3-Question1" aria-describedby="Question1AnswerInput3" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                                                    <input type="radio" class="form-check-input" name="OptionsRadios-question1" id="OptionsRadios3-question1" value="option3">
                                                     Correct?
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="Question1AnswerInput4">Answer 4</label>
-                                                <input type="text" class="form-control" id="Question1AnswerInput4" aria-describedby="Question1AnswerInput4" placeholder="Enter answer">
+                                                <label for="AnswerInput4-Question1">Answer 4</label>
+                                                <input type="text" class="form-control" name="AnswerInput4-Question1" id="AnswerInput4-Question1" aria-describedby="AnswerInput4-Question14" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option4">
+                                                    <input type="radio" class="form-check-input" name="OptionsRadios-question1" id="OptionsRadios4-question1" value="option4">
                                                     Correct?
                                                 </label>
                                             </div>
@@ -97,15 +97,31 @@
             </table>
             <button type="submit" class="btn btn-primary">Create Quiz</button>
         </form>
-
-        {{ $request }}
+        @if(!empty($questions_array))<?php
+            echo '<h1>Questions Array</h1>';
+            echo '<pre>';
+            var_dump($questions_array);
+            echo '</pre>'; ?>
+        @endif
+        @if(!empty($answers_array))<?php
+        echo '<h1>Answers Array</h1>';
+        echo '<pre>';
+        var_dump($answers_array);
+        echo '</pre>'; ?>
+        @endif
+        @if(!empty($correct_answers_array))<?php
+        echo '<h1>Correct Answers Array</h1>';
+        echo '<pre>';
+        var_dump($correct_answers_array);
+        echo '</pre>'; ?>
+        @endif
     </div>
 
     <script>
         $(document).ready(function(){
             var i=2;
             $("#add_question").click(function(){
-                $('#index'+i).html('<td><label for="Question'+i+'">Question '+i+'</label><input type="text" name="question'+i+'" id="Question'+i+'"></td><td><table class="table-sm"><tbody><tr><fieldset class="form-group"><td><div class="form-group"><label for="Question'+i+'AnswerInput1">Answer '+i+'</label><input type="text" class="form-control" id="Question'+i+'AnswerInput1" aria-describedby="Question'+i+'AnswerInput1" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="question'+i+'OptionsRadios" id="question'+i+'OptionsRadios1" value="option1" checked>Correct?</label></div></td><td><div class="form-group"><label for="Question'+i+'AnswerInput2">Answer 2</label><input type="text" class="form-control" id="Question'+i+'AnswerInput2" aria-describedby="Question'+i+'AnswerInput2" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="question'+i+'OptionsRadios" id="question'+i+'optionsRadios2" value="option2">Correct?</label></div></td><td><div class="form-group"><label for="Question'+i+'AnswerInput3">Answer 3</label><input type="text" class="form-control" id="Question'+i+'AnswerInput3" aria-describedby="Question'+i+'AnswerInput3" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="question'+i+'optionsRadios" id="question'+i+'optionsRadios3" value="option3">Correct?</label></div></td><td><div class="form-group"><label for="Question'+i+'AnswerInput4">Answer 4</label><input type="text" class="form-control" id="Question'+i+'AnswerInput4" aria-describedby="Question1AnswerInput4" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="question'+i+'optionsRadios" id="question'+i+'optionsRadios4" value="option4">Correct?</label></div></td></tr></tbody></table></td><td id="DeleteQuestionWrapper'+i+'"><button class="btn btn-danger row-delete" id="DeleteQuestion'+i+'">Delete Question</button></td> </fieldset>');
+                $('#index'+i).html('<td><label for="Question'+i+'">Question '+i+'</label><input type="text" name="question'+i+'" id="Question'+i+'"></td><td><table class="table-sm"><tbody><tr><fieldset class="form-group"><td><div class="form-group"><label for="AnswerInput1-Question'+i+'">Answer1</label><input type="text" class="form-control" name="AnswerInput1-Question'+i+'" id="AnswerInput1-Question'+i+'" aria-describedby="Question'+i+'AnswerInput1" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="OptionsRadios-question'+i+'" id="OptionsRadios1-question'+i+'" value="option1" checked>Correct?</label></div></td><td><div class="form-group"><label for="AnswerInput2-Question'+i+'">Answer 2</label><input type="text" class="form-control" name="AnswerInput2-Question'+i+'" id="AnswerInput2-Question'+i+'" aria-describedby="AnswerInput2-Question'+i+'" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="OptionsRadios-question'+i+'" id="OptionsRadios2-question'+i+'" value="option2">Correct?</label></div></td><td><div class="form-group"><label for="AnswerInput3-Question'+i+'">Answer 3</label><input type="text" class="form-control" name="AnswerInput3-Question'+i+'" id="AnswerInput3-Question'+i+'" aria-describedby="AnswerInput3-Question'+i+'" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="OptionsRadios-question'+i+'" id="OptionsRadios3-question'+i+'" value="option3">Correct?</label></div></td><td><div class="form-group"><label for="AnswerInput4-Question'+i+'">Answer 4</label><input type="text" class="form-control" name="AnswerInput4-Question'+i+'" id="AnswerInput4-Question'+i+'" aria-describedby="AnswerInput4-Question'+i+'" placeholder="Enter answer"></div><div class="form-check"><label class="form-check-label"><input type="radio" class="form-check-input" name="OptionsRadios-question'+i+'" id="OptionsRadios4-question'+i+'" value="option4">Correct?</label></div></td></tr></tbody></table></td><td id="DeleteQuestionWrapper'+i+'"><button class="btn btn-danger row-delete" id="DeleteQuestion'+i+'">Delete Question</button></td> </fieldset>');
                 $('#tab_logic').append('<tr id="index'+(i+1)+'"></tr>');
                 var delete_button = $('#DeleteQuestion'+(i-1));
                 delete_button.remove();
