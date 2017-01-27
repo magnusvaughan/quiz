@@ -31,70 +31,41 @@ class QuizController extends Controller
         //Get Request Data
         $data = $request->all();
 
+        //Echo data array
         highlight_string("<?php\n\$data =\n" . var_export($data, true) . ";\n?>");
-//
-//        //Create the new Quiz
-//        $quiz = new Quiz;
-//        $quiz->user_id = Auth::user()->id;
-//        $quiz->quiz = $request->input('quiz_name');
-//        $quiz->save();
-//
-//        $questions_array = [];
-//        $answers_array = [];
-//        $correct_answers_array = [];
-//
-//        foreach ($data as $key => $value) {
-//
-//            //Create Questions Array
-//            if (starts_with($key, 'question')) {
-//                $questions_array[] = [$key => $value];
-//            }
-//            if (starts_with($key, 'AnswerInput'))  {
-//                $answers_array[strtolower($key)] =  $value;
-//            }
-//            if (starts_with($key, 'OptionsRadios')) {
-//                $correct_answers_array[] = [$key => $value];
-//            }
-//        }
-//
-//
-////        var_dump($key);
-////        dd($correct_answers_array);
-//
-//        foreach ($data as $key => $value) {
-//            //Create the new Questions
-//            if (starts_with($key, 'question')) {
-//                $question = new Question;
-//                $question->quiz_id = $quiz->id;
-//                $question->question = $value;
-//                $question->save();
-//                $question_reference = $question->id;
-//                foreach ($answers_array as $answer_key => $value) {
-//                    if ( str_contains($answer_key, $key) ) {
-//                        $answer = new Answer;
-//                        $answer->question_id = $question_reference;
-//                        $answer->answer = $value[0];
-//                        $answer_key_reference = $answer_key;
-//                        $answer->save();
-//                        $answer_id_reference = $answer->id;
-//                        //Create the new CorrectAnswers
-//                        foreach ($correct_answers_array as $correct_answer_key => $value) {
-//                            $answer_key_reference_first = explode("answerinput", $answer_key_reference)[1];
-//                            $answer_key_reference_second = explode("-", $answer_key_reference_first)[0];
-//                            $answer_key_reference_int = intval($answer_key_reference_second);
-//                            $value_reference = explode("option", key($value));
-//                            $value_reference_int = intval($value_reference);
-//                            if ($value_reference_int == $answer_key_reference_int) {
-//                                $correct_answer = new CorrectAnswer;
-//                                $correct_answer->question_id = $question_reference;
-//                                $correct_answer->answer_id = $answer_id_reference;
-//                                $correct_answer->save();
-//                            }
-//                        }
-//                    }
+
+        //Create Quiz instance
+        $quiz = new Quiz;
+        $quiz->user_id = Auth::user()->id;
+        $quiz->quiz = $data['quiz-name'];
+        $quiz->save();
+        //Create Question Instance
+        foreach ($data['question'] as $question_key => $question) {
+            $question_instance = new Question;
+            $question_instance->quiz_id = $quiz->id;
+            $question_instance->question = $question['question-text'];
+            $question_instance->save();
+            //Create Answer Instance
+            foreach ($question['answers'] as $answer_key => $answer ) {
+                if($answer_key != "is_correct") {
+                    var_dump($answer_key);
+                    $answer_instance = new Answer;
+                    $answer_instance->question_id = $question_instance->id;
+                    $answer_instance->answer = $answer;
+                    $answer_instance->save();
+                }
+                if($answer_key == 'is_correct'){
+                    $correct_answer = CorrectAnswer::create(['question_id' => $question_instance->id, 'answer_id' => $answer_instance->id ]);
+                }
+////                //Create CorrectAnswer instance
+//                if($answer_instance['correct'] == 'true') {
+//                    $correct_answer_instance = new CorrectAnswer;
+//                    $correct_answer_instance->question_id = $question_instance->id;
+//                    $correct_answer_instance->answer_id = $answer_instance->id;
+//                    $correct_answer_instance->save();
 //                }
-//            }
-//        }
+            }
+        }
         return view('quizzes.create', compact('questions_array', 'answers_array', 'correct_answers_array'));
     }
 }

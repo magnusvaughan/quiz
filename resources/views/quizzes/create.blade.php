@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="quiz-name[1]" class="col-sm-3 control-label">Quiz Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="quiz-name[1]" id="quiz-name[1]" class="form-control">
+                    <input type="text" name="quiz-name" id="quiz-name" class="form-control">
                 </div>
             </div>
 
@@ -25,8 +25,8 @@
                 <tbody>
                 <tr id="index1">
                         <td>
-                            <label for="question-text[1]">Question 1</label>
-                            <input type="text" name="question-text[1]" id="question-text[1]">
+                            <label for="question[1][question-text]">Question 1</label>
+                            <input type="text" name="question[1][question-text]" id="question[1][question-text]">
                         </td>
                         <td>
                             <table class="table-sm">
@@ -34,48 +34,48 @@
                                     <tr>
                                         <td>
                                             <div class="form-group">
-                                                <label for="answer[1][1]">Answer 1</label>
-                                                <input type="text" class="form-control" name="answer[1][1]" id="answer[1][1]" aria-describedby="answer[1][1]" placeholder="Enter answer">
+                                                <label for="question[1][answers][1]">Answer 1</label>
+                                                <input type="text" class="form-control" name="question[1][answers][1]" id="question[1][answers][1]" aria-describedby="question[1][answers][1]" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
-                                                <label class="answer-check[1]">
-                                                    <input type="radio" class="form-check-input" name="answer-check[1]" id="answer-check[1][1]" value="option1" checked>
+                                                <label class="question[1][answers][is_correct]">
+                                                    <input type="radio" class="form-check-input" name="question[1][answers][is_correct]" id="question[1][answers][1][is_correct]" value="1" checked>
                                                     Correct?
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="answer[1][2]">Answer 2</label>
-                                                <input type="text" class="form-control" name="answer[1][2]" id="answer[1][2]" aria-describedby="answer[1][2]" placeholder="Enter answer">
+                                                <label for="question[1][answers][2]">Answer 2</label>
+                                                <input type="text" class="form-control" name="question[1][answers][2]" id="question[1][answers][2]" aria-describedby="question[1][answers][2]" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
-                                                <label for="answer-check[1]" class="form-check">
-                                                    <input type="radio" class="form-check-input" name="answer-check[1]" id="answer-check[1][2]" value="option2">
+                                                <label for="question[1][answers][is_correct]" class="form-check">
+                                                    <input type="radio" class="form-check-input" name="question[1][answers][is_correct]" id="question[1][answers][2][is_correct]" value="2">
                                                     Correct?
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="answer[1][3]">Answer 3</label>
-                                                <input type="text" class="form-control" name="answer[1][3]" id="answer[1][3]" aria-describedby="answer[1][3]" placeholder="Enter answer">
+                                                <label for="question[1][answers][3]">Answer 3</label>
+                                                <input type="text" class="form-control" name="question[1][answers][3]" id="question[1][answers][3]" aria-describedby="question[1][answers][3]" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
-                                                <label for="answer-check[1][3]" class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="answer-check[1]" id="answer-check[1][3]" value="option3">
+                                                <label for="question[1][answers][3][is_correct]" class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="question[1][answers][is_correct]" id="question[1][answers][3][is_correct]" value="3">
                                                     Correct?
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="answer[1][4]">Answer 4</label>
-                                                <input type="text" class="form-control" name="answer[1][4]" id="answer[1][4]" aria-describedby="answer[1][4]" placeholder="Enter answer">
+                                                <label for="question[1][answers][4]">Answer 4</label>
+                                                <input type="text" class="form-control" name="question[1][answers][4]" id="question[1][answers][4]" aria-describedby="question[1][answers][4]" placeholder="Enter answer">
                                             </div>
                                             <div class="form-check">
-                                                <label for="answer-check[1]" class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="answer-check[1]" id="answer-check[1][4]" value="option4">
+                                                <label for="question[1][answers][is_correct]" class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="question[1][answers][is_correct]" id="question[1][answers][4][is_correct]" value="4">
                                                     Correct?
                                                 </label>
                                             </div>
@@ -99,7 +99,7 @@
         $(document).ready(function(){
             var i=2;
             $("#add_question").click(function(){
-                $('#index'+i).html('<td><label for="question-text['+i+'1]">Question '+i+'</label><input type="text" name="question-text['+i+']" id="question-text['+i+']"></td><td><table class="table-sm"><tbody><tr><td><div class="form-group"><label for="answer['+i+'][1]">Answer 1</label><input type="text" class="form-control" name="answer['+i+'][1]" id="answer['+i+'][1]" aria-describedby="answer['+i+'][1]" placeholder="Enter answer"></div><div class="form-check"><label for="answer-check['+i+']" class="answer-check"><input type="radio" class="form-check-input" name="answer-check['+i+']" id="answer-check['+i+'][1]" value="option1" checked>Correct?</label></div></td><td><div class="form-group"><label for="answer['+i+'][2]">Answer 2</label><input type="text" class="form-control" name="answer['+i+'][2]" id="answer['+i+'][2]" aria-describedby="answer['+i+'][2]" placeholder="Enter answer"></div><div class="form-check"><label for="answer-check['+i+']" class="form-check"><input type="radio" class="form-check-input" name="answer-check['+i+']" id="answer-check['+i+'][2]" value="option2">Correct?</label></div></td><td><div class="form-group"><label for="answer['+i+'][3]">Answer 3</label><input type="text" class="form-control" name="answer['+i+'][3]" id="answer['+i+'][3]" aria-describedby="answer['+i+'][3]" placeholder="Enter answer"></div><div class="form-check"><label for="answer-check['+i+']" class="form-check-label"><input type="radio" class="form-check-input" name="answer-check['+i+']" id="answer-check['+i+'][3]" value="option3">Correct?</label></div></td><td><div class="form-group"><label for="answer['+i+'][4]">Answer 4</label><input type="text" class="form-control" name="answer['+i+'][4]" id="answer['+i+'][4]" aria-describedby="answer['+i+'][4]" placeholder="Enter answer"></div><div class="form-check"><label for="answer-check['+i+']" class="form-check-label"><input type="radio" class="form-check-input" name="answer-check['+i+']" id="answer-check['+i+'][4]" value="option4">Correct?</label></div></td></tr></tbody></table></td>');
+                $('#index'+i).html('<td><label for="question['+i+'][question-text]">Question '+i+'</label><input type="text" name="question['+i+'][question-text]" id="question['+i+'][question-text]"></td><td><table class="table-sm"><tbody><tr><td><div class="form-group"><label for="question['+i+'][answers][1]">Answer 1</label><input type="text" class="form-control" name="question['+i+'][answers][1]" id="question['+i+'][answers][1]" aria-describedby="question['+i+'][answers][1]" placeholder="Enter answer"></div><div class="form-check"><label for="question['+i+'][answers][correct]" class="answer-check"><input type="radio" class="form-check-input" name="question['+i+'][answers][correct]" id="question['+i+'][answers][1][correct]" value="true" checked>Correct?</label></div></td><td><div class="form-group"><label for="question['+i+'][answers][2]">Answer 2</label><input type="text" class="form-control" name="question['+i+'][answers][2]" id="question['+i+'][answers][2]" aria-describedby="question['+i+'][answers][2]" placeholder="Enter answer"></div><div class="form-check"><label for="question['+i+'][answers][correct]" class="form-check"><input type="radio" class="form-check-input" name="question['+i+'][answers][correct]" id="question['+i+'][answers][2][correct]" value="true">Correct?</label></div></td><td><div class="form-group"><label for="question['+i+'][answers][3]">Answer 3</label><input type="text" class="form-control" name="question['+i+'][answers][3]" id="question['+i+'][answers][3]" aria-describedby="question['+i+'][answers][3]" placeholder="Enter answer"></div><div class="form-check"><label for="question['+i+'][answers][correct]" class="form-check-label"><input type="radio" class="form-check-input" name="question['+i+'][answers][correct]" id="question['+i+'][answers][3][correct]" value="true">Correct?</label></div></td><td><div class="form-group"><label for="question['+i+'][answers][4]">Answer 4</label><input type="text" class="form-control" name="question['+i+'][answers][4]" id="question['+i+'][answers][4]" aria-describedby="question['+i+'][answers][4]" placeholder="Enter answer"></div><div class="form-check"><label for="question['+i+'][answers][correct]" class="form-check-label"><input type="radio" class="form-check-input" name="question['+i+'][answers][correct]" id="question['+i+'][answers][4][correct]" value="true">Correct?</label></div></td></tr></tbody></table></td>');
                 $('#tab_logic').append('<tr id="index'+(i+1)+'"></tr>');
                 var delete_button = $('#DeleteQuestion'+(i-1));
                 delete_button.remove();
