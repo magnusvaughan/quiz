@@ -1,9 +1,22 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Muli:300,400,600);
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+//Custom code
+
+//Home page
+
+h1.home-page-title {
+  margin-bottom: 5rem;
+}
+
+.card {
+  margin-bottom: 4rem;
+}

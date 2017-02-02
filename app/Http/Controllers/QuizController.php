@@ -19,7 +19,8 @@ class QuizController extends Controller
 
     public function index(Request $request)
     {
-        return view('quizzes.index');
+        $quizzes = Quiz::all();
+        return view('quizzes.index', compact('quizzes'));
     }
     public function create(Request $request)
     {
@@ -55,15 +56,9 @@ class QuizController extends Controller
                     $answer_instance->save();
                 }
                 if($answer_key == 'is_correct'){
+                    //Create CorrectAnswer instance
                     $correct_answer = CorrectAnswer::create(['question_id' => $question_instance->id, 'answer_id' => $answer_instance->id ]);
                 }
-////                //Create CorrectAnswer instance
-//                if($answer_instance['correct'] == 'true') {
-//                    $correct_answer_instance = new CorrectAnswer;
-//                    $correct_answer_instance->question_id = $question_instance->id;
-//                    $correct_answer_instance->answer_id = $answer_instance->id;
-//                    $correct_answer_instance->save();
-//                }
             }
         }
         return view('quizzes.create', compact('questions_array', 'answers_array', 'correct_answers_array'));

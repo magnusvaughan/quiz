@@ -1,36 +1,39 @@
 @extends('layouts.app')
 @section('content')
     <!-- Bootstrap Boilerplate... -->
-    <div class="panel-body">
-        <!-- Display Validation Errors -->
-    @include('common.errors')
-    <!-- New Task Form -->
-        <form action="{{ url('quizzes') }}" method="POST" class="form-horizontal">
-        {{ csrf_field() }}
-        <!-- Task Name -->
-            <div class="form-group">
-                <label for="quiz-name[1]" class="col-sm-3 control-label">Quiz Name</label>
-                <div class="col-sm-6">
-                    <input type="text" name="quiz-name" id="quiz-name" class="form-control">
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Create a new quiz</h1>
+            <div class="panel-body">
+                <!-- Display Validation Errors -->
+            @include('common.errors')
+            <!-- New Task Form -->
+                <form action="{{ url('quizzes') }}" method="POST" class="form-horizontal">
+                {{ csrf_field() }}
+                <!-- Task Name -->
+                    <div class="form-group">
+                        <label for="quiz-name[1]" class="col-sm-3 control-label">Quiz Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="quiz-name" id="quiz-name" class="form-control">
+                        </div>
+                    </div>
 
-            <table class="table" id="tab_logic">
-                <thead>
-                <tr>
-                    <th>Question</th>
-                    <th colspan="4">Answers</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr id="index1">
-                        <td>
-                            <label for="question[1][question-text]">Question 1</label>
-                            <input type="text" name="question[1][question-text]" id="question[1][question-text]">
-                        </td>
-                        <td>
-                            <table class="table-sm">
-                                <tbody>
+                    <table class="table" id="tab_logic">
+                        <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th colspan="4">Answers</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr id="index1">
+                            <td>
+                                <label for="question[1][question-text]">Question 1</label>
+                                <input type="text" name="question[1][question-text]" id="question[1][question-text]">
+                            </td>
+                            <td>
+                                <table class="table-sm">
+                                    <tbody>
                                     <tr>
                                         <td>
                                             <div class="form-group">
@@ -81,19 +84,22 @@
                                             </div>
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    <td>
-                        <div id="add_question" class="btn btn-info">Add Question</div>
-                    </td>
-                </tr>
-                <tr id='index2'></tr>
-                </tbody>
-            </table>
-            <button type="submit" class="btn btn-primary">Create Quiz</button>
-        </form>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                <div id="add_question" class="btn btn-info">Add Question</div>
+                            </td>
+                        </tr>
+                        <tr id='index2'></tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-primary">Create Quiz</button>
+                </form>
+            </div>
+        </div>
     </div>
+
 
     <script>
         $(document).ready(function(){
