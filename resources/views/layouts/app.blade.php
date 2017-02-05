@@ -40,7 +40,7 @@
                         <a class="nav-link" href="/quizzes/index">Take a Quiz</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create">Create a Quiz</a>
+                        <a class="nav-link" href="/quizzes/create">Create a Quiz</a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
