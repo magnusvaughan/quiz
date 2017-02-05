@@ -63,9 +63,6 @@ class QuizController extends Controller
         //Get Request Data
         $data = $request->all();
 
-        //Echo data array
-//        highlight_string("<?php\n\$data =\n" . var_export($data, true) . ";\n?>");
-<?php
         //Create Quiz instance
         $quiz = new Quiz;
         $quiz->user_id = Auth::user()->id;
@@ -80,7 +77,7 @@ class QuizController extends Controller
             //Create Answer Instance
             foreach ($question['answers'] as $answer_key => $answer ) {
                 if($answer_key != "is_correct") {
-                    var_dump($answer_key);
+//                    var_dump($answer_key);
                     $answer_instance = new Answer;
                     $answer_instance->question_id = $question_instance->id;
                     $answer_instance->answer = $answer;
