@@ -7,10 +7,11 @@
     @include('common.errors')
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <ul>
+                <div class="col-md-12">
+                    <h1 class="text-center">Select a Quiz</h1>
+                    <ul class="list-group">
                     @foreach ($quizzes as $quiz)
-                    <li><h4>{{$quiz->quiz}}</h4></li>
+                    <li class="list-group-item"><h3><a href="/quizzes/{{$quiz->id}}">{{$quiz->quiz}}</a></h3></li>
                     @endforeach
                     </ul>
                 </div>

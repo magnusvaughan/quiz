@@ -12,4 +12,9 @@ class Answer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+
+    public function correctAnswer()
+    {
+        return $this->hasOne(CorrectAnswer::class);
+    }
 }

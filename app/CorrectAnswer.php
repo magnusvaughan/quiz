@@ -12,11 +12,11 @@ class CorrectAnswer extends Model
 
     public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->hasOne(Question::class);
     }
 
     public function answers()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasOne(Answer::class);
     }
 }

@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Quiz Routes
+Route::group(['prefix' => 'quizzes'], function () {
+    Route::get('/index', 'QuizController@index');
+    Route::get('/create', 'QuizController@create');
+    Route::post('/', 'QuizController@store');
+    Route::get('/{quiz}', 'QuizController@show');
+    Route::post('/{quiz}', 'QuizController@result');
+    Route::delete('/{quiz}', 'QuizController@destroy');
+});
+
 Auth::routes();
 
 // Authentication Routes...
@@ -22,10 +32,3 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-//Quiz Routes
-Route::group(['prefix' => 'quizzes'], function () {
-    Route::get('/', 'QuizController@index');
-    Route::get('/create', 'QuizController@create');
-    Route::post('/', 'QuizController@store');
-    Route::delete('/{quiz}', 'QuizController@destroy');
-});

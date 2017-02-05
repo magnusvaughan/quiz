@@ -17,4 +17,9 @@ class Question extends Model
     {
         return $this->belongsTo(Quiz::class);
     }
+
+    public function correctAnswer()
+    {
+        return $this->hasOne(CorrectAnswer::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Answer;
 use App\CorrectAnswer;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
@@ -22,6 +23,36 @@ class QuizController extends Controller
         $quizzes = Quiz::all();
         return view('quizzes.index', compact('quizzes'));
     }
+
+    public function show(Quiz $quiz) {
+
+        return view('quizzes.show', compact('quiz'));
+
+    }
+
+    public function result(Request $request) {
+
+        $data = $request->all();
+        $answers_array = [];
+        $correct_answers_array = [];
+        $correct_answers_array_filtered = [];
+        $question_count = 0;
+        foreach ($data as $key => $datum) {
+            if($key != '_token' && $key != 'invisible') {
+                $answers_array[$key] = $datum;
+                $correct_answers_array[] =  json_decode(DB::table('correct_answers')->where('question_id', $key)->get(), true);
+                $question_count++;
+            }
+        }
+        foreach ($correct_answers_array as $correct_answer) {
+            $correct_answers_array_filtered[$correct_answer[0]['question_id']] = $correct_answer[0]['answer_id'];
+        }
+        $correct_answers_count = count(array_intersect($answers_array, $correct_answers_array_filtered));
+
+        return view('quizzes.result', compact('data', 'quiz', 'correct_answers_array', 'correct_answers_array_filtered', 'answers_array', 'correct_answers_count', 'question_count'));
+
+    }
+
     public function create(Request $request)
     {
         return view('quizzes.create');
@@ -33,8 +64,8 @@ class QuizController extends Controller
         $data = $request->all();
 
         //Echo data array
-        highlight_string("<?php\n\$data =\n" . var_export($data, true) . ";\n?>");
-
+//        highlight_string("<?php\n\$data =\n" . var_export($data, true) . ";\n?>");
+<?php
         //Create Quiz instance
         $quiz = new Quiz;
         $quiz->user_id = Auth::user()->id;
@@ -61,7 +92,8 @@ class QuizController extends Controller
                 }
             }
         }
-        return view('quizzes.create', compact('questions_array', 'answers_array', 'correct_answers_array'));
+        $quizzes = Quiz::all();
+        return view('quizzes.index', compact('quizzes'));
     }
 }
 

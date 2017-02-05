@@ -13,7 +13,7 @@
                 <div class="card-block">
                     <h4 class="card-title">Take a quiz</h4>
                     <p class="card-text">Take one of our fantastic quizzes</p>
-                    <a href="#" class="btn btn-primary">Do it!</a>
+                    <a href="/quizzes/index" class="btn btn-primary">Do it!</a>
                 </div>
             </div>
         </div>
