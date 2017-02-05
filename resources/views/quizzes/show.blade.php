@@ -14,17 +14,17 @@
                        {{ csrf_field() }}
                        <?php $i = 1 ?>
                         @foreach($quiz->questions as $question)
-                            <fieldset class="form-group">
+                            <fieldset class="form-group row">
                                 <legend>{{ $question->question }}</legend>
                                 <?php $j = 1 ?>
                                 <div class="form-check">
-                                @foreach($question->answers as $answer)
-                                        <label class="form-check-label">
-                                            <label for="{{$question->id}}">  {{ $answer->answer }} </label>
-                                            <input type="radio" class="form-check-input" name="{{$question->id}}" value="{{$answer->id}}" {{ $j==1 ? 'checked' : '' }}>
-                                        </label>
-                                    {{$j++}}
-                                @endforeach
+                                    @foreach($question->answers as $answer)
+                                        <div class="row">
+                                            <label class="form-check-label col-md-6" for="{{$question->id}}">  {{ $answer->answer }} </label>
+                                            <input type="radio" class="form-check-input col-md-6" name="{{$question->id}}" value="{{$answer->id}}" {{ $j==1 ? 'checked' : '' }}>
+                                            <?php $j++ ?>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </fieldset>
                             <?php $i++ ?>

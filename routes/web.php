@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication Routes...
+Route::auth();
+
 //Quiz Routes
 Route::group(['prefix' => 'quizzes'], function () {
     Route::get('/index', 'QuizController@index');
@@ -25,10 +28,6 @@ Route::group(['prefix' => 'quizzes'], function () {
     Route::delete('/{quiz}', 'QuizController@destroy');
 });
 
-Auth::routes();
-
-// Authentication Routes...
-Route::auth();
 
 Route::get('/home', 'HomeController@index');
 

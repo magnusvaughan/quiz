@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h1 class="text-center home-page-title">This is a quiz</h1>
+            <h1 class="text-center home-page-title">Welcome to Quiz Machine</h1>
         </div>
     </div>
     <div class="row">

@@ -49,7 +49,7 @@ class QuizController extends Controller
         }
         $correct_answers_count = count(array_intersect($answers_array, $correct_answers_array_filtered));
 
-        return view('quizzes.result', compact('data', 'quiz', 'correct_answers_array', 'correct_answers_array_filtered', 'answers_array', 'correct_answers_count', 'question_count'));
+        return view('quizzes.result', compact('data','correct_answers_array_filtered', 'answers_array', 'correct_answers_count', 'question_count'));
 
     }
 
